@@ -1,0 +1,32 @@
+Abstract
+========
+
+A collection of i3ipc_ code, used to simulate I3 commands that do not exist or do not work, as I'd like them to work.
+Examples from my I3 config:
+
+    .. code-block:: python
+
+        bindsym $mod+Shift+Right exec (..)/i3ricing.py Mover.focused_container_right
+        bindsym $mod+Shift+Left  exec (..)/i3ricing.py Mover.focused_container_left
+
+        bindsym $mod+Shift+Mod1+Right exec (..)/i3ricing.py Mover.focused_container_to_next_ws
+        bindsym $mod+Shift+Mod1+Left  exec (..)/i3ricing.py Mover.focused_container_to_previous_ws
+
+        bindsym $mod+Mod1+Return exec (..)/i3ricing.py Launcher.new_workspace
+        bindsym $mod+r exec /(..)/i3ricing.py Launcher.on_focused "exec dmenu_run -m {} -fn '-*-terminus-*-*-normal-*-*-180-*-*-*-*-*-*'" run=True
+
+.. _i3ipc: https://pypi.org/project/i3ipc/
+
+API
+===
+
+.. automodule:: i3ricing.main
+
+Classes
+=======
+
+.. autoclass:: i3ricing.Mover
+   :members:
+
+.. autoclass:: i3ricing.Launcher
+   :members:

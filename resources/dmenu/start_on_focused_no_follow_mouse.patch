@@ -1,0 +1,32 @@
+This patch removes the follow mouse behaviour from dmenu in the suckless tools (https://tools.suckless.org/).
+This is the simpler solution for the mess documented in i3ricing.get_focused_output_idx(), but it comes at the
+burden or recompiling dmenu.
+
+% cd /tmp
+/tmp % git clone git://git.suckless.org/dmenu && cd dmenu
+/tmp/dmenu % git checkout tags/4.9
+/tmp/dmenu % patch -p1 < (..)/resources/dmenu/start_on_focused_no_follow_mouse.patch
+/tmp/dmenu % make
+
+Make sure the 'dmenu_run' script calls the locally compiled dmenu when testing (not a possible global one) like this:
+    #!/bin/sh
+    root_dir=`dirname $0`
+    ${root_dir}/dmenu_path | ${root_dir}/dmenu "$@" | ${SHELL:-"/bin/sh"} &
+
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -632,10 +632,10 @@ setup(void)
+ 					}
+ 		}
+ 		/* no focused window is on screen, so use pointer location instead */
+-		if (mon < 0 && !area && XQueryPointer(dpy, root, &dw, &dw, &x, &y, &di, &di, &du))
+-			for (i = 0; i < n; i++)
+-				if (INTERSECT(x, y, 1, 1, info[i]))
+-					break;
++		//if (mon < 0 && !area && XQueryPointer(dpy, root, &dw, &dw, &x, &y, &di, &di, &du))
++		//	for (i = 0; i < n; i++)
++		//		if (INTERSECT(x, y, 1, 1, info[i]))
++		//			break;
+ 
+ 		x = info[i].x_org;
+ 		y = info[i].y_org + (topbar ? 0 : info[i].height - mh);
