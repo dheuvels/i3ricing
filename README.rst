@@ -66,9 +66,9 @@ Classes
       However it is not available in the *move* command and the *next
       sibling* and it will not change the focus across workspaces.
 
-      *focused_container_right()* will move the to the next workspace,
-      if it was the rightmost container (actually by calling
-      *focused_container_to_next_ws()*).
+      *focused_container_right()* moves right, until the container is
+      the rightmost sibling and then moves it to the next workspace
+      (actually by calling *focused_container_to_next_ws()*).
 
       :Returns:
          The result of *i3ipc.Connection.command()* or the result of
