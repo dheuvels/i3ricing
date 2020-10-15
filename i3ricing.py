@@ -15,7 +15,7 @@ class BaseI3:
         self.conn = i3ipc.Connection()
         self.i3tree = self.conn.get_tree()
 
-        # I3 nodes that represent an output. This are the output representations in the i3 tree. The node name builds the bridge to xrandr.
+        # I3 nodes that represent an output. These are the output representations in the i3 tree. The node name builds the bridge to xrandr.
         i3_outputs = [node for node in self.i3tree.nodes if node.type == OUTPUT_TYPE and node.name != STASH_OUTPUT]
         # Sort nodes by their horizontal positions, so that the index reflects the position left to right.
         self.i3_outputs = sorted(i3_outputs, key=lambda op: op.rect.x)
@@ -42,8 +42,8 @@ class BaseI3:
                  I need this for the `-m` switch in dmenu which expects a "monitor number" (whatever that is).
                  There are some leftovers from xinerama in dmenu and the number seems to come from what is returned
                  by `xrandr --listactivemonitors`.
-                 I'm not sure, if `get_outputs()` always returns the same order as `xrandr --listactivemonitors`,
-                 but as long as I put the primary display first and let the rest unchanged, it seems to work.
+                 I'm not sure, if `get_outputs()` always returns the same order as `xrandr --listactivemonitors`.
+                 Anyway, as long as I put the primary display first and let the rest unchanged, it seems to work.
         """
         focused_output = self.get_focused_output()
         for idx, output in enumerate(self.randr_outputs):
@@ -103,7 +103,7 @@ class Mover(BaseI3):
 
             i3-msg "move right"
 
-        With multiple containers (siblings) in an horizontal split the above command moves the focused container right
+        With multiple containers in an horizontal split (siblings) the above command moves the focused container right
         within the siblings. However if the focused container is the rightmost sibling, it will jump to the next output
         (not the next workspace as I would expect). This is annoying as it even ignores existing workspaces on the
         originating output.
@@ -118,8 +118,8 @@ class Mover(BaseI3):
         However it is not available in the `move` command and the `next sibling` and it will not change the focus
         across workspaces.
 
-        `focused_container_right()` will move the container right and move to the next workspace, if it was the
-        rightmost container (actually by calling `focused_container_to_next_ws()`).
+        `focused_container_right()` will move the to the next workspace, if it was the rightmost container (actually by
+        calling `focused_container_to_next_ws()`).
 
         :return: The result of `i3ipc.Connection.command()` or the result of `focused_container_to_next_ws()`.
 
@@ -144,7 +144,7 @@ class Mover(BaseI3):
     def focused_container_to_next_ws(self):
         """
         Move the focused container to the next workspace.
-        This is an amendment to the following `i3-ipc` commands.
+        This is an amendment to the following `i3-ipc` commands (I have seen once or twice on Reddit).
 
         .. code-block:: python
 
