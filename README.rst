@@ -47,7 +47,7 @@ Classes
 
          i3-msg "move right"
 
-      With multiple containers (siblings) in an horizontal split the
+      With multiple containers in an horizontal split (siblings) the
       above command moves the focused container right within the
       siblings. However if the focused container is the rightmost
       sibling, it will jump to the next output (not the next workspace
@@ -66,9 +66,9 @@ Classes
       However it is not available in the *move* command and the *next
       sibling* and it will not change the focus across workspaces.
 
-      *focused_container_right()* will move the container right and
-      move to the next workspace, if it was the rightmost container
-      (actually by calling *focused_container_to_next_ws()*).
+      *focused_container_right()* will move the to the next workspace,
+      if it was the rightmost container (actually by calling
+      *focused_container_to_next_ws()*).
 
       :Returns:
          The result of *i3ipc.Connection.command()* or the result of
@@ -81,7 +81,8 @@ Classes
    **focused_container_to_next_ws()**
 
       Move the focused container to the next workspace. This is an
-      amendment to the following *i3-ipc* commands.
+      amendment to the following *i3-ipc* commands (I have seen once
+      or twice on Reddit).
 
       ::
 
