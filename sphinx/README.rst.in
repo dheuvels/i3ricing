@@ -13,7 +13,7 @@ Examples from my I3 config:
         bindsym $mod+Shift+Mod1+Left  exec (..)/i3ricing.py Mover.focused_container_to_previous_ws
 
         bindsym $mod+Mod1+Return exec (..)/i3ricing.py Launcher.new_workspace
-        bindsym $mod+r exec /(..)/i3ricing.py Launcher.on_focused "exec dmenu_run -m {} -fn '-*-terminus-*-*-normal-*-*-180-*-*-*-*-*-*'" run=True
+        bindsym $mod+r exec (..)/i3ricing.py Launcher.on_focused "exec dmenu_run -m {} -fn '-*-terminus-*-*-normal-*-*-180-*-*-*-*-*-*'" run=True
 
 .. _i3ipc: https://pypi.org/project/i3ipc/
 

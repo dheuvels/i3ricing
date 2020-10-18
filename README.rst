@@ -17,7 +17,7 @@ them to work. Examples from my I3 config:
       bindsym $mod+Shift+Mod1+Left  exec (..)/i3ricing.py Mover.focused_container_to_previous_ws
 
       bindsym $mod+Mod1+Return exec (..)/i3ricing.py Launcher.new_workspace
-      bindsym $mod+r exec /(..)/i3ricing.py Launcher.on_focused "exec dmenu_run -m {} -fn '-*-terminus-*-*-normal-*-*-180-*-*-*-*-*-*'" run=True
+      bindsym $mod+r exec (..)/i3ricing.py Launcher.on_focused "exec dmenu_run -m {} -fn '-*-terminus-*-*-normal-*-*-180-*-*-*-*-*-*'" run=True
 
 
 API
@@ -47,7 +47,7 @@ Classes
 
          i3-msg "move right"
 
-      With multiple containers in an horizontal split (siblings) the
+      With multiple containers in a horizontal split (siblings) the
       above command moves the focused container right within the
       siblings. However if the focused container is the rightmost
       sibling, it will jump to the next output (not the next workspace

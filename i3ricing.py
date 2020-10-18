@@ -103,7 +103,7 @@ class Mover(BaseI3):
 
             i3-msg "move right"
 
-        With multiple containers in an horizontal split (siblings) the above command moves the focused container right
+        With multiple containers in a horizontal split (siblings) the above command moves the focused container right
         within the siblings. However if the focused container is the rightmost sibling, it will jump to the next output
         (not the next workspace as I would expect). This is annoying as it even ignores existing workspaces on the
         originating output.
