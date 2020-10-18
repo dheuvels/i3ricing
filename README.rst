@@ -63,8 +63,9 @@ Classes
 
          i3-msg "focus next sibling"
 
-      However it is not available in the *move* command and the *next
-      sibling* and it will not change the focus across workspaces.
+      However it is not available in the *move* command and the *focus
+      next sibling* command will not change the focus across
+      workspaces.
 
       *focused_container_right()* moves right, until the container is
       the rightmost sibling and then moves it to the next workspace
@@ -72,7 +73,8 @@ Classes
 
       :Returns:
          The result of *i3ipc.Connection.command()* or the result of
-         *focused_container_to_next_ws()*.
+         *focused_container_to_next_ws()*, if the container was moved
+         across workspaces.
 
    **focused_container_left()**
 
@@ -81,8 +83,7 @@ Classes
    **focused_container_to_next_ws()**
 
       Move the focused container to the next workspace. This is an
-      amendment to the following *i3-ipc* commands (I have seen once
-      or twice on Reddit).
+      amendment to the following *i3-ipc* commands:
 
       ::
 
@@ -115,7 +116,8 @@ Classes
    **new_workspace()**
 
       Opens a new workspace with the next free workspace number. This
-      is an amendment to the following *i3-ipc* commands.
+      is an amendment to the following *i3-ipc* commands (I have seen
+      once or twice on Reddit):
 
       ::
 
@@ -144,15 +146,15 @@ Classes
       *resources* folder.)
 
       :Parameters:
-         * **cmd** – The command with a placeholder. E.g.: “exec
-            my_fancy_prog –output {}”
+         * **cmd** – An i3-ipc command containing a placeholder.
+            E.g.: “exec my_fancy_prog –output {}”
 
          * **attrib** – An attribute of *i3ipc.Con* to substitute the
             placeholder in *cmd*. If *None*, the value returned by
             *BaseI3.get_focused_output_idx()* will be used.
 
          * **run** – If *True*, the resulting command will be passed
-            to i3ipc, if *False* the command is returned.
+            to i3ipc. If *False* the command is returned.
 
       :Returns:
          The result of *i3ipc.Connection.command()* if *run* is *True*
